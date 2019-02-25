@@ -1,6 +1,13 @@
+const rfr = require('rfr');
 const express = require( 'express' );
 const bodyParser = require( 'body-parser' );
 const path = require( 'path' );
+const passport = require('passport');
+
+const mongoose = rfr('server/mongoose');
+
+const dataLiteracy = rfr('server/routes/api/dataLiteracy');
+
 
 const router = express.Router();
 
@@ -13,6 +20,15 @@ const app = express();
  */
 app.use( bodyParser.urlencoded( { extended: false } ) );
 app.use( bodyParser.json() );
+
+app.use('/api/dataLiteracy', dataLiteracy);
+
+// Passport middleware
+app.use(passport.initialize());
+
+// Include Passport Config
+rfr('server/config/passport')(passport);
+
 
 // We export the router so that the server.js file can pick it up
 module.exports = router;

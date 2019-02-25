@@ -6,13 +6,16 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "jquery": "^3.3.1",
+    "jwt-decode": "^2.2.0",
+    "mdbreact": "^4.11.0",
     "prop-types": "^15.6.2",
     "qs": "^6.5.2",
     "react": "^16.5.2",
+    "react-bootstrap4-modal": "^1.7.0",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4",
+    "react-scripts": "^2.1.5",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
@@ -21,7 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "NODE_PATH=src/ react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,0 +1,69 @@
+
+let sum = 0;
+let persona = '';
+let r1 = '';
+let Result = '';
+
+let Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10;
+
+if ( Question1 == 'a' || 'b' || 'c' ) {
+    persona = 'Executive';
+} else {
+    persona = '';
+}
+
+if ( Question2 === 'a' ) {
+    Result = 'Data Skeptic';
+} else {
+
+    if ( Question3 === 'b' || 'c' ) {
+        sum = sum + 1;
+    }
+
+    if ( Question4 === 'a' ) {
+        sum = sum + 1;
+    }
+
+    if ( Question5 === 'c' ) {
+        sum = sum + 1;
+    }
+
+    if ( Question6 === 'a' || 'b' ) {
+        sum = sum + 1;
+    }
+
+    if ( Question7 === 'b' ) {
+        sum = sum + 1;
+    }
+
+}
+
+if ( sum >= 3 ) {
+
+    if (Question8 === 'a') {
+
+        if (Question9 === 'a') {
+        
+            if ( Question10 === 'a') {
+                r1 = 'Data Scientist';
+            } else {
+                r1 = 'Citizen Analyst';
+            }
+        
+        } else {
+            r1 = 'Data Literate';
+        }
+    
+    } else {
+        r1 = 'Data Enthusiast';
+    }
+
+}
+
+if ( ( r1 == 'Citizen Analyst' || 'Data Literate' || 'Data Scientist' ) && ( persona == 'Executive' ) ) {
+    Result = 'Data Driven Executive';
+} else {
+    Result = r1;
+}
+
+Print ( Result );
