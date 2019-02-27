@@ -6,15 +6,18 @@ import classnames from 'classnames';
 
 import Navbar from './common/Navbar';
 import AllQuiz from './layouts/dashboard/AllQuiz';
+import SingleQuiz from './layouts/dashboard/SingleQuiz';
+
 
 import AdminSidebar from './common/AdminSidebar';
 
 class Dashboard extends Component {
 
-    renderSwitch = ( param ) => {
+    renderSwitch = ( param, param2 ) => {
 
         switch( param ){
-            case 'quiz' : return <AllQuiz />;                
+            case 'quiz' : return <AllQuiz />; 
+            case 'single-quiz': return <SingleQuiz path={param2} />;            
             default: return (<div>Not Found</div>)
         }
     }
@@ -22,6 +25,7 @@ class Dashboard extends Component {
     render() {
     
         const urlParams = (this.props.match.params.path) ? this.props.match.params.path : '';
+        const urlParams2 = (this.props.match.params.path2) ? this.props.match.params.path2 : '';
 
         return (
             <>
@@ -32,7 +36,7 @@ class Dashboard extends Component {
                             <AdminSidebar />
                         </div>
                         <div className='col-md-8 col-lg-9 col-xl-10' >
-                            {this.renderSwitch(urlParams)}
+                            {this.renderSwitch(urlParams, urlParams2)}
                         </div>
 
                     </div>

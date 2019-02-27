@@ -163,12 +163,19 @@ class AllQuiz extends Component {
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link to={'/'}>
+                                                <Link to={`/dashboard/single-quiz/${item._id}`}>
                                                     <i className="far fa-edit" />
                                                 </Link>
                                             </td>
                                         </tr>
                                     ))}
+                                    { quizes && quizes.length == 0 && (
+                                        <tr>
+                                            <td colSpan='6' className='text-center'>
+                                                Result Not Found
+                                            </td>
+                                        </tr>
+                                    ) }
                                     { this.state.addNewLoading && (
                                         <tr>
                                             <td colSpan='6' className='text-center'>

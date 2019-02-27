@@ -35,27 +35,9 @@ router.post( '/add-question', (req, res) => {
     const Question = new DataLiteracyTest({
         quizId: body.quizId,
         question: body.question,
-        options: [
-            {
-                optionId: 'a',
-                optionText: 'I am the business unit head'
-            },
-            {
-                optionId: 'b',
-                optionText: 'I manage a team of significant size'
-            },
-            {
-                optionId: 'c',
-                optionText: 'I manage a significant budget'
-            },
-            {
-                optionId: 'd',
-                optionText: 'I am not in the leadership position'
-            },
-        ],
+        options: body.options,
         sequence: body.sequence,
     });
-
 
     Question.save()
         .then( data => {
@@ -68,8 +50,44 @@ router.post( '/add-question', (req, res) => {
 
 } );
 
-// fetch quiz by quizId (obj ID)
-router.get('/fetch-questions-by-quiz-id/:quizid', (req, res) => {
+// Add new Question in quiz
+router.post( '/edit-question', (req, res) => {
+
+    let body = req.body;
+
+    const Question = {
+        question: body.question,
+        options: body.options,
+        sequence: body.sequence,
+    }
+    
+    DataLiteracyTest.findOneAndUpdate({ _id: body._id }, { $set: Question }, { new: true })
+        .then( data => {
+            return res.status(200).json( data );
+        } )
+        .catch( err => {
+             return res.status(400).json( err );
+        } );
+
+} );
+
+//Delete 
+router.post('/delete-question', (req, res) => {
+
+    let body = req.body;
+    
+    DataLiteracyTest.findOneAndRemove({ _id: body._id, quizId: body.quizId })
+        .then(data => {
+            return res.status(200).json(data);
+        })
+        .catch(err => {
+            return res.status(400).json(err);
+        });
+
+});
+
+// fetch questions by quizId (obj ID)
+router.get( '/fetch-questions-by-quiz-id/:quizid', (req, res) => {
 
     DataLiteracyTest.find({ quizId: req.params.quizid })
         .then( data => {
@@ -79,10 +97,10 @@ router.get('/fetch-questions-by-quiz-id/:quizid', (req, res) => {
              return res.status(400).json( err );
         } );
 
-});
+} );
 
 
-// fetch quiz by shortname (uniqueId) (obj ID)
+// fetch questions by shortname (uniqueId) (obj ID)
 router.get('/fetch-questions-by-shortname/:shortname', (req, res) => {
 
     Quiz.findOne({ uniqueId: req.params.shortname })

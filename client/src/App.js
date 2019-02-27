@@ -69,7 +69,9 @@ class App extends Component {
           <div className="App">
             <Switch>
               <Route exact path="/" component={DataLiteracyTest} />
+              
               <Route exact path="/dashboard/:path" component={Dashboard} />
+              <Route exact path="/dashboard/:path/:path2" component={Dashboard} />
               <Route exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/admin-dashboard/" component={Dashboard} />
               <Route component={Page404} />
