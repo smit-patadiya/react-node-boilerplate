@@ -148,12 +148,12 @@ class SingleQuiz extends Component {
                         <div className='d-block'>
                             
                             <h3 className='d-inline-block'>
-                                { quizData.name && (
+                                { quizData && quizData.name && (
                                     <>
                                         {quizData.name}
                                     </>
                                 )}
-                                { !quizData.name && (
+                                { quizData && !quizData.name && (
                                     <>
                                         <span className='bg-light pt-3 d-inline-block' style={{ width: '250px' }}></span>
                                     </>

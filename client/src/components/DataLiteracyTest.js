@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import { logoutUser } from "../actions/authActions";
+//import { getSingleQuizById } from "../../../actions/quizActions";
+//import { getQuestionsByQuizId } from "../../../actions/questionActions";
 
 
 import Navbar from './common/Navbar';
@@ -15,8 +17,14 @@ class DataLiteracyTest extends Component {
         super( props );
 
         this.state = {
-
+            quizId: ''
         }
+    }
+
+    componentWillMount() {
+        let quizId = this.state.quizId;
+       // this.props.getSingleQuizById(quizId);
+       // this.props.getQuestionsByQuizId(quizId);
     }
 
     render() {
@@ -63,4 +71,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { logoutUser })(DataLiteracyTest);
+export default connect(mapStateToProps, { logoutUser, /*getSingleQuizById, getQuestionsByQuizId*/ })(DataLiteracyTest);
